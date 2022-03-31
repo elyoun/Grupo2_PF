@@ -4,43 +4,62 @@ import org.scalatest.funsuite.AnyFunSuite
 
 class StringFunctionsTest extends AnyFunSuite:
 
-  test("testRemoveDigits") {
-      val input = "a1b2c3"
-      val expected = "abc"
-      assert( StringFunctions.removeDigits(input) === expected)
+  test("testRemoveDigits 1") {
+
+    val input = "a1b2c3"
+    val expected = "abc"
+
+    assert(StringFunctions.removeDigits(input) === expected)
+
   }
 
-  test("testRemoveDigits2"){
-    val input = "a casa 31 fica no porto"
-    val expected = "a casa  fica no porto"
-    assert( StringFunctions.removeDigits(input) === expected)
+  test("testRemoveDigits 2") {
+
+    val input = "A casa n. 31 fica no Porto"
+    val expected = "A casa n.  fica no Porto"
+
+    assert(StringFunctions.removeDigits(input) === expected)
+
   }
 
-  test("testRemoveDigits3"){
-    val input = "123"
-    val expected = ""
-    assert( StringFunctions.removeDigits(input) === expected)
+  test("testRemoveDigits 3") {
+
+    val input = "caravela"
+    val expected = "caravela"
+
+    assert(StringFunctions.removeDigits(input) === expected)
+
   }
 
-  test("testIncDigits") {
-    val input1 = "ola2"
-    val input2 = 4
-    val expected = "ola6"
-    assert( StringFunctions.incDigits(input1, input2) === expected)
+
+
+  test("testIncDigits1") {
+
+    val inputStr = "abc"
+    val inputInt = 2
+    val expected = "abc"
+
+    assert(StringFunctions.incDigits(inputStr, inputInt) === expected)
+
   }
 
   test("testIncDigits2") {
-    val input1 = "123"
-    val input2 = 1
-    val expected = "234"
-    assert( StringFunctions.incDigits(input1, input2) === expected)
+
+    val inputStr = "que fixe"
+    val inputInt = 2
+    val expected = "que fixe"
+
+    assert(StringFunctions.incDigits(inputStr, inputInt) === expected)
+
   }
+
   test("testIncDigits3") {
-    val input1 = "asd"
-    val input2 = 1
-    val expected = "asd"
-    assert( StringFunctions.incDigits(input1, input2) === expected)
+
+    val inputStr = "1258"
+    val inputInt = 2
+    val expected = "347:"  // dá "347:" porque os dois pontos é o 10 em ASCII (8+2)
+
+    assert(StringFunctions.incDigits(inputStr, inputInt) === expected)
+
   }
-
-
 
