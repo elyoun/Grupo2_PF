@@ -6,7 +6,7 @@ def stringstring(s1: String, s2: String) : String =
 def encryptTR(s:String) : String =
 
   def f(c1:Char) : Char =
-    if (c1=='z') (c1-25).toChar
+    if ((c1=='z') && (c1 == 'Z')) (c1-25).toChar
     else (c1+1).toChar
 
   @tailrec
@@ -20,7 +20,7 @@ def encryptTR(s:String) : String =
 def decryptTR(s:String) : String =
 
   def f(c1:Char) : Char =
-    if (c1=='a') 'z'
+    if ((c1=='a') && (c1 == 'A')) (c1-25).toChar
     else (c1-1).toChar
 
   @tailrec
@@ -76,6 +76,7 @@ def decryptNTimes2(s: String, n: Int) : String =
   if (n>1) decryptNTimes(decryptTR(s), n-1)
   else decryptTR(s)
 
+encryptTR("ola eu sou o joao")
 encryptNTimes("aaa a", 3)
 112.toChar
 decryptNTimes("rod#hx#vrx", 2)

@@ -5,7 +5,7 @@ object Dummy:
   def encryptTR(s:String) : String =
 
     def f(c1:Char) : Char =
-      if (c1=='z') (c1-25).toChar
+      if ((c1=='z') || (c1 == 'Z')) (c1-25).toChar
       else (c1+1).toChar
 
     @tailrec
@@ -19,7 +19,7 @@ object Dummy:
   def decryptTR(s:String) : String =
 
     def f(c1:Char) : Char =
-      if (c1=='a') 'z'
+      if ((c1=='a') || (c1 == 'A')) (c1-25).toChar
       else (c1-1).toChar
 
     @tailrec
@@ -42,10 +42,11 @@ object Dummy:
   def encryptNTimes(s: String, n: Int) : (String, Int) =
     @tailrec
     def aux(s: String, n:Int) : String =
-      if (n>1) aux(encryptTR(s),n-1)
-      else encryptTR(s)
+      if (n>0) aux(encryptTR(s),n-1)
+      else s
     (aux(s,n), s.count(_ == ' '))
 
+  /*
   def decryptNTimes(s: String, n: Int) : String =
   
     def regression (s: String, n: Int, c:Int) : Int =
@@ -58,7 +59,13 @@ object Dummy:
       else decryptTR(s)
   
     aux(s, regression(s, n, 0))
-
- 
+  */
+  def decrypt2 (s: String, n: Int): String=
+    @tailrec
+    def aux(s: String): String =
+      if (s.count(_ == ' ') == n) s else aux(decryptTR(s))
+    aux(s)
+    
+  
 
 

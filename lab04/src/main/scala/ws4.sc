@@ -1,3 +1,5 @@
+import Dummy.{decryptNTimesMelhor, decryptTR, encryptNTimes, encryptTR}
+
 import scala.annotation.tailrec
 
 def decryptTR(s:String) : String =
@@ -31,6 +33,18 @@ def regression (s: String, n: Int, c:Int) : Int =
   if (s.count(_ == ' ') == n) c
   else regression(decryptTR(s), n, c+1)
 
+def stringstring(s1: String, s2: String) : String =
+  s1 + " " + s2
 
-regression("ola#eu#sou", 2, 0)
-decryptNTimes("rod#hx#vrx", 2)
+def secret (s: String) : String =
+  encryptTR(stringstring (s, "PS: This is a secret"))
+
+def desecret (s: String) : String =
+  stringstring (decryptTR(s), "PS: This is a secret")
+
+secret("")
+desecret("")
+decryptTR(encryptTR("ola eu Zsou o Joao"))
+encryptNTimes("ola",2)
+decryptNTimesMelhor("#",1)
+
