@@ -1,3 +1,1 @@
-# README #
-
-Exercises about recursion using Scala
+AF3 - 1 Abril
