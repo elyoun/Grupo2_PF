@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object Dummy:
   def stringToInt(s: String): Int = s.toInt
 
@@ -79,3 +81,12 @@ object Dummy:
       case Nil => Nil
       case (h::t) => if (l.count(n => n == h) <= 1) List(h) ::: keepUnique(l.filterNot(n => n == h))
                      else keepUnique(l.filterNot(n => n == h))
+
+  def keepUniqueTR [T] (xs:List[T]): List[T] =
+    @tailrec
+    def aux[T](xs:List[T], acc: List[T]) : List[T] =
+      xs match
+          case Nil => acc
+          case h::t => if (xs.count(x=> x==h)>1) aux(xs.filterNot(s=> s==h), List())
+                       else aux(t, acc ::: List(h))
+    aux(xs, List())
