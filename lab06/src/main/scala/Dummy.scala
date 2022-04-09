@@ -10,17 +10,13 @@ object Dummy:
     x.map(s => s.length)
 
   def findSubstrings(x: List[String], str: String)=
-    def aux(s: String, str: String): Boolean =
-      if (s == str) true
-      else if (s.length < str.length) false
-      else aux(s.tail, str)
-
-    x.filter(s => aux(s, str))
+    x.filter(s => s.contains(str))
+    
 
   def doubleList(xs: List[Int]): List[Int]=
     xs match
       case Nil=> Nil
-      case h::t => h*h :: doubleList(t)
+      case h::t => h*2 :: doubleList(t)
 
   def constructList(xs: List[(String, Int)]):List[String]=xs match
     case Nil => Nil
@@ -53,12 +49,12 @@ object Dummy:
       case Nil => Nil
       case h::t => (h::t).takeWhile(x => x == h ) :: groupInList((h::t).dropWhile(x => x == h))
 
-  def groupInList2[T](xs: List[T]): List[List[T]] =
+  /*def groupInList2[T](xs: List[T]): List[List[T]] =
     xs match
       case Nil => Nil
       case h :: t =>
         val (hs, ts) = t.span(s => s == h)
-        (h:hs) :: groupInList2(ts)
+        (h:hs) :: groupInList2(ts)*/
   
   
   
