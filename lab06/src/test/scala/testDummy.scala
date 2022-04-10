@@ -33,6 +33,19 @@ class testDummy extends AnyFunSuite:
     assert(Dummy.findSubstrings(input1, input2) === expected)
   }
 
+   test("findSubstringsRec1") {
+    val input1 = meiESOFT
+    val input2 = "SOFT"
+    val expected = List("ARQSOFT", "ODSOFT", "QESOFT", "LABDSOFT")
+    assert(Dummy.findSubstringsRec(input1, input2) === expected)
+  }
+  test("findSubstringsRec2") {
+    val input1 = frutos
+    val input2 = "ANA"
+    val expected = List("BANANA", "ANANAS")
+    assert(Dummy.findSubstringsRec(input1, input2) === expected)
+  }
+
   //3 doubleList
   test("doubleList1") {
     val input = List(2, 1, 4, 5)
@@ -48,6 +61,40 @@ class testDummy extends AnyFunSuite:
     val input = List()
     val expected = List()
     assert(Dummy.doubleList(input) === expected)
+  }
+
+  //3.1 doubleListTR
+  test("doubleListTR1") {
+    val input = List(2, 1, 4, 5)
+    val expected = List(4, 2, 8, 10)
+    assert(Dummy.doubleListTR(input) === expected)
+  }
+  test("doubleListTR2") {
+    val input = List(8, 3, 6, 0)
+    val expected = List(16, 6, 12, 0)
+    assert(Dummy.doubleListTR(input) === expected)
+  }
+  test("doubleListTR3") {
+    val input = List()
+    val expected = List()
+    assert(Dummy.doubleListTR(input) === expected)
+  }
+
+  //3.2 doubleListAlt
+  test("doubleListAlt1") {
+    val input = List(2, 1, 4, 5)
+    val expected = List(4, 2, 8, 10)
+    assert(Dummy.doubleListAlt(input) === expected)
+  }
+  test("doubleListAlt2") {
+    val input = List(8, 3, 6, 0)
+    val expected = List(16, 6, 12, 0)
+    assert(Dummy.doubleListAlt(input) === expected)
+  }
+  test("doubleListAlt3") {
+    val input = List()
+    val expected = List()
+    assert(Dummy.doubleListAlt(input) === expected)
   }
 
   //4 sumCubes2
@@ -77,6 +124,13 @@ class testDummy extends AnyFunSuite:
     assert(Dummy.constructList(input) === expected)
   }
 
+  //5.1 constructListTR
+  test("constructListTR") {
+    val input = List(("a",1), ("b",2),("abba",3), ("a",2))
+    val expected = List("a", "b", "b", "abba", "abba", "abba", "a", "a")
+    assert(Dummy.constructListTR(input) === expected)
+  }
+
   //6 duplicateDigits
   test("duplicateDigits") {
     val input = List(1,2,3,4,5,6,7,8,9,10,11,345)
@@ -87,4 +141,17 @@ class testDummy extends AnyFunSuite:
     val input = List(0,65,0)
     val expected = List(0, 6565, 0)
     assert(Dummy.duplicateDigits(input) === expected)
+  }
+  
+  //6.1 duplicateDigitsTR
+  
+  test("duplicateDigitsTR") {
+    val input = List(1,2,3,4,5,6,7,8,9,10,11,345)
+    val expected = List(11, 22, 33, 44, 55, 66, 77, 88, 99, 1010, 1111, 345345)
+    assert(Dummy.duplicateDigitsTR(input) === expected)
+  }
+  test("duplicateDigitsTR0") {
+    val input = List(0,65,0)
+    val expected = List(0, 6565, 0)
+    assert(Dummy.duplicateDigitsTR(input) === expected)
   }
